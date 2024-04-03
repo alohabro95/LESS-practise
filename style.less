@@ -1,8 +1,89 @@
-@width: 10px;
-@height: @width + 10px;
-body {
-  .test {
-    width: @width;
-    height: @height;
+* {
+  margin: 0;
+  font-family: Poppins;
+}
+.header {
+  padding: 30px 100px 30px 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__first {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  &__first-logo {
+    padding: 5px 0px;
+  }
+  &__first-caption {
+    font-family: Montserrat;
+    font-size: 34px;
+    font-weight: 700;
+  }
+  &__list-ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 75px;
+    list-style: none;
+    & > li {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  &__action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 45px;
+  }
+}
+
+.section-discover {
+  padding: 152px 0px 92px 0px;
+  background-image: url(/images/discover__background.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.discover {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  &__fiction {
+  }
+
+  &__content {
+    max-width: 644px;
+    padding: 62px 0px 0px 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff3e3;
+  }
+
+  &__content-text1 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__content-caption {
+    font-size: 52px;
+    font-weight: 700;
+    color: #b88e2f;
+    margin-bottom: 18px;
+  }
+
+  &__content-text2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 46px;
+  }
+
+  &__content-btn {
+    max-width: 222px;
+    margin-bottom: 36px;
+    padding: 25px 70px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    border-style: none;
+    background-color: #b88e2f;
   }
 }
