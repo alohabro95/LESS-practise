@@ -142,6 +142,11 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    transition: transform 0.3s ease;
+  }
+  &__second-el:hover {
+    transform: scale(1.05);
+    cursor: pointer;
   }
 }
 .el {
@@ -185,6 +190,7 @@
     padding: 12px 74px 12px 82px;
     list-style: none;
     border-width: 1px;
+    transition: background-color 0.3 ease;
   }
   &__btn:hover {
     cursor: pointer;
@@ -199,6 +205,66 @@
     gap: 8px;
     background-color: #f4f5f7;
     padding-bottom: 30px;
+    position: relative;
+    transition: filter 0.3s ease;
+  }
+
+  &__el:hover .hover-container {
+    opacity: 1;
+  }
+  &__el .hover-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+  &__el .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    &__first {
+      .add {
+        width: 202px;
+        height: 48px;
+        border-style: none;
+        font-weight: 600;
+        color: #b88e2f;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .add:hover {
+        cursor: pointer;
+        background-color: #b88e2f;
+        color: #ffffff;
+      }
+    }
+    &__second {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .el-btn {
+        background: none;
+        border-style: none;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .el-btn:hover {
+        transform: scale(1.1);
+      }
+      .text-btn {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
   }
 
   &__el-content {
@@ -278,6 +344,87 @@
   &__first-btn:hover {
     cursor: pointer;
     opacity: 0.66;
+  }
+
+  &__slider {
+  }
+  .rooms__slider-card {
+    margin-right: 24px;
+  }
+  .slider__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  .next {
+    top: 50%;
+    right: 5%;
+  }
+  .prev {
+    z-index: 1;
+    top: 50%;
+    left: 5%;
+    transform: scaleX(-1);
+  }
+  .slick-dots {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    list-style: none;
+    position: absolute;
+    bottom: 4%;
+    right: 32%;
+  }
+  .slick-dots button {
+    font-size: 0px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+  }
+  .slick-active button {
+    border: 2px solid #b88e2f;
+  }
+  .slick-dots li button::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #9f9f9f;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .slick-dots li.slick-active button::after {
+    background-color: #b88e2f;
+  }
+  &__slider-card {
+    &.slick-current {
+      width: 404px;
+      height: 582px;
+      // padding-right: 25px;
+      img {
+        width: 100%;
+        height: 101%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__slider-info {
   }
 }
 
@@ -430,10 +577,12 @@
     display: none;
   }
   .label-text {
+    cursor: pointer;
     color: #9f9f9f;
   }
 
   .radio-button {
+    cursor: pointer;
     display: block;
     height: 14px;
     width: 14px;
