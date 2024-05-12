@@ -4,9 +4,9 @@ var slickSettings = {
   slidesToShow: 2,
   slidesToScroll: 1,
   prevArrow:
-    "<button class='prev slider__btn'><img src='products__images/right.svg'></button>",
+    "<button class='prev slider__btn'><img src='images/products__images/right.svg'></button>",
   nextArrow:
-    "<button class='next slider__btn'><img src='products__images/right.svg'></button>",
+    "<button class='next slider__btn'><img src='images/products__images/right.svg'></button>",
   responsive: [
     {
       breakpoint: 768,
