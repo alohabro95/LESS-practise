@@ -1,14 +1,12 @@
 var slickSettings = {
   dots: true,
-  infinite: true,
   speed: 500,
-  slidesToShow: 1,
+  slidesToShow: 2,
   slidesToScroll: 1,
-  centerMode: true,
-  variableWidth: true,
-  adaptiveHeight: true,
-  prevArrow: '<button type="button" class="slick-prev">&#10094;</button>',
-  nextArrow: '<button type="button" class="slick-next">&#10095;</button>',
+  prevArrow:
+    "<button class='prev slider__btn'><img src='products__images/right.svg'></button>",
+  nextArrow:
+    "<button class='next slider__btn'><img src='products__images/right.svg'></button>",
   responsive: [
     {
       breakpoint: 768,
