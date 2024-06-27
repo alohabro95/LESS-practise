@@ -1,12 +1,13 @@
 const gulp = require("gulp");
 const less = require("gulp-less");
+const path = require("path");
 
 function compileLess() {
-  return gulp.src("./style.less").pipe(less()).pipe(gulp.dest("."));
+  return gulp.src("src/**/*.less").pipe(less()).pipe(gulp.dest("css"));
 }
 
 function watchLess() {
-  gulp.watch("style.less", compileLess);
+  gulp.watch("src/**/*.less", compileLess);
 }
 
 exports.less = compileLess;
