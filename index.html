@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eCommercial Website</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="css/styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap"
@@ -362,66 +362,68 @@
     <section class="section-details">
         <div class="container">
             <div class="details">
-                <div class="details__form">
-                    <h1 class="details__form-caption">Billing details</h1>
-                    <div class="details__form-names">
-                        <div class="names__first details__form-el">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input name="firstName" type="text" class="form-control" id="firstName"
-                                placeholder="Введите имя" value="">
+                <form id="orderForm">
+                    <div class="details__form">
+                        <h1 class="details__form-caption">Billing details</h1>
+                        <div class="details__form-names">
+                            <div class="names__first details__form-el">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input name="firstName" type="text" class="form-control" id="firstName"
+                                    placeholder="Введите имя" value="">
+                            </div>
+                            <div class="names__second details__form-el">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input name="lastName" type="text" class="form-control" id="lastName"
+                                    placeholder="Введите фамилию" value="">
+                            </div>
                         </div>
-                        <div class="names__second details__form-el">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input name="lastName" type="text" class="form-control" id="lastName"
-                                placeholder="Введите фамилию" value="">
+                        <div class="details__form-company details__form-el">
+                            <label for="company" class="form-label">Company Name (Optional)</label>
+                            <input name="company" type="text" class="form-control" id="company"
+                                placeholder="Введите название компании" value="">
+                        </div>
+                        <div class="details__form-country details__form-el">
+                            <label for="country" class="form-label">Country / Region</label>
+                            <input name="country" type="text" class="form-control" id="country"
+                                placeholder="Введите название страны" value="">
+                        </div>
+                        <div class="details__form-street details__form-el">
+                            <label for="street" class="form-label">Street address</label>
+                            <input name="street" type="text" class="form-control" id="street"
+                                placeholder="Введите название улицы" value="">
+                        </div>
+                        <div class="details__form-town details__form-el">
+                            <label for="town" class="form-label">Town / City</label>
+                            <input name="town" type="text" class="form-control" id="town"
+                                placeholder="Введите название города" value="">
+                        </div>
+                        <div class="details__form-province details__form-el">
+                            <label for="province" class="form-label">Province</label>
+                            <input name="province" type="text" class="form-control" id="province"
+                                placeholder="Введите название провинции" value="">
+                        </div>
+                        <div class="details__form-zip details__form-el">
+                            <label for="zip" class="form-label">ZIP code</label>
+                            <input name="zip" type="text" class="form-control" id="zip" placeholder="Введите Zip code"
+                                value="">
+                        </div>
+                        <div class="details__form-phone details__form-el">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input name="phone" type="text" class="form-control" id="phone" placeholder="Введите номер"
+                                value="">
+                        </div>
+                        <div class="details__form-email details__form-el">
+                            <label for="email" class="form-label">Email address</label>
+                            <input name="email" type="text" class="form-control" id="email" placeholder="Введите email"
+                                value="">
+                        </div>
+                        <div class="details__form-info details__form-el">
+                            <label for="info" class="form-label"></label>
+                            <input name="info" type="text" class="form-control" id="info"
+                                placeholder="Additional information" value="">
                         </div>
                     </div>
-                    <div class="details__form-company details__form-el">
-                        <label for="company" class="form-label">Company Name (Optional)</label>
-                        <input name="company" type="text" class="form-control" id="company"
-                            placeholder="Введите название компании" value="">
-                    </div>
-                    <div class="details__form-country details__form-el">
-                        <label for="country" class="form-label">Country / Region</label>
-                        <input name="country" type="text" class="form-control" id="country"
-                            placeholder="Введите название страны" value="">
-                    </div>
-                    <div class="details__form-street details__form-el">
-                        <label for="street" class="form-label">Street address</label>
-                        <input name="street" type="text" class="form-control" id="street"
-                            placeholder="Введите название улицы" value="">
-                    </div>
-                    <div class="details__form-town details__form-el">
-                        <label for="town" class="form-label">Town / City</label>
-                        <input name="town" type="text" class="form-control" id="town"
-                            placeholder="Введите название города" value="">
-                    </div>
-                    <div class="details__form-province details__form-el">
-                        <label for="province" class="form-label">Province</label>
-                        <input name="province" type="text" class="form-control" id="province"
-                            placeholder="Введите название провинции" value="">
-                    </div>
-                    <div class="details__form-zip details__form-el">
-                        <label for="zip" class="form-label">ZIP code</label>
-                        <input name="zip" type="text" class="form-control" id="zip" placeholder="Введите Zip code"
-                            value="">
-                    </div>
-                    <div class="details__form-phone details__form-el">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input name="phone" type="text" class="form-control" id="phone" placeholder="Введите номер"
-                            value="">
-                    </div>
-                    <div class="details__form-email details__form-el">
-                        <label for="email" class="form-label">Email address</label>
-                        <input name="email" type="text" class="form-control" id="email" placeholder="Введите email"
-                            value="">
-                    </div>
-                    <div class="details__form-info details__form-el">
-                        <label for="info" class="form-label"></label>
-                        <input name="info" type="text" class="form-control" id="info"
-                            placeholder="Additional information" value="">
-                    </div>
-                </div>
+                </form>
                 <div class="details__info">
                     <div class="details__table">
                         <div class="table">
@@ -474,15 +476,42 @@
                             </p>
                         </div>
                     </div>
-                    <div class="details__button"><button class="btn">Place order</button></div>
+                    <div class="details__button"><button class="btn" type="submit">Place order</button></div>
                 </div>
             </div>
+        </div>
+    </section>
+    <section class="section-footer">
+        <div class="footer">
+            <div class="footer-container">
+                <div class="footer__column">
+                    <h1 class="">Funiro.</h1>
+                    <p>400 University Drive Suite 200 Coral Gables,
+                        </br>FL 33134 USA</p>
+                </div>
+                <div class="footer__column">
+                    <span>Links</span><span>Home</span><span>Shop</span><span>About</span><span>Contact</span>
+                </div>
+                <div class="footer__column"><span>Help</span><span>Payment
+                        Options</span><span>Returns</span><span>Privacy Policies</span>
+                </div>
+                <div class="footer__column">
+                    <span>Newsletter</span>
+                    <div class="footer__form">
+                        <input class="form__input" type="text" placeholder="Enter Your Email Address"><button
+                            class="form__btn">SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-line"></div>
+            <div class="footer-bottomText">2023 furino. All rights reverved</div>
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="/src/scripts/main.js" type="text/javascript"></script>
+    <script src="/order.interface.ts"></script>
 </body>
 
 </html>
