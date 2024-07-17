@@ -2,8 +2,38 @@
   font-family: Poppins;
   margin: 0;
 }
+.navigation_product {
+  width: 100%;
+  height: 100px;
+  background-color: #f9f1e7;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-left: 100px;
+  margin-bottom: 32px;
+}
+.nav__el {
+  display: flex;
+  align-items: center;
+  height: 37px;
+}
+.nav__first {
+  gap: 14px;
+}
+.nav__second {
+  gap: 21px;
+}
+.nav__third {
+  border-left: 3px #9f9f9f solid;
+}
+.nav__third span {
+  padding-left: 34px;
+}
+.section-card {
+  margin-bottom: 114px;
+}
 .card-product {
-  margin: 0 auto;
+  margin: 0 auto 0 100px;
   display: flex;
   gap: 104px;
 }
@@ -170,24 +200,62 @@
   width: 105%;
   margin-bottom: 16px;
 }
-.footer {
+.information {
   display: flex;
   justify-content: space-between;
   gap: 16px;
   max-width: 284px;
 }
-.footer__column {
+.information__column {
   display: flex;
   flex-direction: column;
   gap: 12px;
   color: #9f9f9f;
 }
-.footer .footer__column2 .col {
+.information .information__column2 .col {
   display: flex;
   gap: 12px;
   white-space: nowrap;
 }
-.footer .footer__column2 .col__logos {
+.information .information__column2 .col__logos {
   display: flex;
   gap: 24px;
+}
+.section-description {
+  margin-bottom: 66px;
+}
+.description {
+  gap: 36px;
+}
+.description__header {
+  display: flex;
+  gap: 52px;
+}
+.description__header h1 {
+  font-weight: 400;
+  color: #9f9f9f;
+}
+.description__header h1:first-child {
+  font-weight: 500;
+  color: #000000;
+}
+.description__text {
+  max-width: 1026px;
+  gap: 30px;
+}
+.description__text p {
+  font-size: 16px;
+  color: #9f9f9f;
+}
+.description__images {
+  display: flex;
+  gap: 30px;
+}
+.description,
+.description__text {
+  display: flex;
+  flex-direction: column;
+}
+.description div {
+  margin: 0 auto;
 }

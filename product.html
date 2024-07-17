@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
     <link rel="stylesheet" href="/css/styles/product/product.css">
+    <link rel="stylesheet" href="/css/styles/layout/layout.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap"
@@ -15,82 +16,118 @@
 
 <body>
     <div id="header-placeholder"></div>
-    <div class="card-product">
-        <div class="card-product__images">
-            <div class="images-group">
-                <img src="/images/card__images/first.png" alt="">
-                <img src="/images/card__images/second.png" alt="">
-                <img src="/images/card__images/third.png" alt="">
-                <img src="/images/card__images/fourth.png" alt="">
-            </div>
-            <div class="big-image"><img src="/images/card__images/big.jpg" alt=""></div>
+    <div class="navigation_product">
+        <div class=" nav__el nav__first"><span>Home</span><img src="/images/products__images/product__arrow.png" alt="">
         </div>
-        <div class="card-product__info">
-            <div class="content">
-                <div>
-                    <h1 class="content__caption">Asgaard sofa</h1>
-                    <span class="content__price">Rs. 250,000.00</span>
+        <div class="nav__el nav__second"><span>Shop</span><img src="/images/products__images/product__arrow.png" alt="">
+        </div>
+        <div class="nav__el nav__third"><span>Asgaard sofa</span></div>
+    </div>
+    <section class="section-card">
+        <div class="card-product">
+            <div class="card-product__images">
+                <div class="images-group">
+                    <img src="/images/card__images/first.png" alt="">
+                    <img src="/images/card__images/second.png" alt="">
+                    <img src="/images/card__images/third.png" alt="">
+                    <img src="/images/card__images/fourth.png" alt="">
                 </div>
-                <div class="content__rating">
-                    <span class="stars"><img src="/images/card__images/stars.png" alt=""></span>
-                    <hr class="line">
-                    <span class="reviews">5 Customer Review</span>
-                </div>
-                <p class="content__description">Setting the bar as one of the loudest speakers in its class, the Kilburn
-                    is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and
-                    extended highs for a sound.
-                </p>
+                <div class="big-image"><img src="/images/card__images/big.jpg" alt=""></div>
             </div>
-            <div class="size">
-                <span class="size__caption">Size</span>
-                <div class="size__container">
-                    <button id="button1" class="button" onclick="changeColor(1)">L</button>
-                    <button id="button2" class="button" onclick="changeColor(2)">XL</button>
-                    <button id="button3" class="button" onclick="changeColor(3)">XS</button>
+            <div class="card-product__info">
+                <div class="content">
+                    <div>
+                        <h1 class="content__caption">Asgaard sofa</h1>
+                        <span class="content__price">Rs. 250,000.00</span>
+                    </div>
+                    <div class="content__rating">
+                        <span class="stars"><img src="/images/card__images/stars.png" alt=""></span>
+                        <hr class="line">
+                        <span class="reviews">5 Customer Review</span>
+                    </div>
+                    <p class="content__description">Setting the bar as one of the loudest speakers in its class, the
+                        Kilburn
+                        is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and
+                        extended highs for a sound.
+                    </p>
                 </div>
-            </div>
-            <div class="color">
-                <span class="color__caption">Color</span>
-                <div class="color__container">
-                    <button id="circle1" class="circle circle--blue"></button>
-                    <button id="circle2" class="circle circle--black"></button>
-                    <button id="circle3" class="circle circle--gold"></button>
+                <div class="size">
+                    <span class="size__caption">Size</span>
+                    <div class="size__container">
+                        <button id="button1" class="button" onclick="changeColor(1)">L</button>
+                        <button id="button2" class="button" onclick="changeColor(2)">XL</button>
+                        <button id="button3" class="button" onclick="changeColor(3)">XS</button>
+                    </div>
                 </div>
-            </div>
-            <div class="buttons">
-                <div class="counter">
-                    <button class="minus-btn">-</button>
-                    <span class="number">1</span>
-                    <button class="plus-btn">+</button>
+                <div class="color">
+                    <span class="color__caption">Color</span>
+                    <div class="color__container">
+                        <button id="circle1" class="circle circle--blue"></button>
+                        <button id="circle2" class="circle circle--black"></button>
+                        <button id="circle3" class="circle circle--gold"></button>
+                    </div>
                 </div>
-                <button class="add-to-cart">Add To Cart</button>
-                <button class="compare">+ Compare</button>
-            </div>
-            <hr class="hr">
-            <div class="footer">
-                <div class="footer__column">
-                    <span>SKU</span>
-                    <span>Category</span>
-                    <span>Tags</span>
-                    <span>Share</span>
+                <div class="buttons">
+                    <div class="counter">
+                        <button class="minus-btn">-</button>
+                        <span class="number">1</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                    <button class="compare">+ Compare</button>
                 </div>
-                <div class="footer__column footer__column2">
-                    <div class="col"> <span>:</span><span>SS001</span></div>
-                    <div class="col"> <span>:</span><span>Sofas</span></div>
-                    <div class="col"> <span>:</span><span>Sofa, Chair, Home, Shop</span></div>
-                    <div class="col">
-                        <span>:</span>
-                        <div class="col__logos">
-                            <img src="/images/footer__images/facebook.png" alt="">
-                            <img src="/images/footer__images/instagram.png" alt="">
-                            <img src="/images/footer__images/twitter.png" alt="">
+                <hr class="hr">
+                <div class="information">
+                    <div class="information__column">
+                        <span>SKU</span>
+                        <span>Category</span>
+                        <span>Tags</span>
+                        <span>Share</span>
+                    </div>
+                    <div class="information__column information__column2">
+                        <div class="col"> <span>:</span><span>SS001</span></div>
+                        <div class="col"> <span>:</span><span>Sofas</span></div>
+                        <div class="col"> <span>:</span><span>Sofa, Chair, Home, Shop</span></div>
+                        <div class="col">
+                            <span>:</span>
+                            <div class="col__logos">
+                                <img src="/images/footer__images/facebook.png" alt="">
+                                <img src="/images/footer__images/instagram.png" alt="">
+                                <img src="/images/footer__images/twitter.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <section class="section-description">
+        <div class="description">
+            <div class="description__header">
+                <h1>Description</h1>
+                <h1>Additional Information</h1>
+                <h1>Reviews [5]</h1>
+            </div>
+            <div class="description__text">
+                <p>Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn portable active stereo speaker takes
+                    the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.</p>
+
+                <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting
+                    the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero
+                    with a well-balanced audio which boasts a clear midrange and extended highs for a sound that is both
+                    articulate and pronounced. The analogue knobs allow you to fine tune the controls to your personal
+                    preferences while the guitar-influenced leather strap enables easy and stylish travel.</p>
+            </div>
+            <div class="description__images">
+                <img src="/images/card__images/description_first.jpg" alt=""><img
+                    src="/images/card__images/description_second.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <div id="footer-placeholder"></div>
+    <script src="/src/scripts/module.js" type="module"></script>
     <script src="/src/scripts/product-scripts.js" type="text/javascript"></script>
+
 </body>
 
 </html>
