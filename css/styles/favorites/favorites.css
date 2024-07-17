@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  font-family: Poppins;
+}
+.section-navigation {
+  background-image: url(/images/favorites__images/navigation_image.jpg);
+  height: 316px;
+  display: flex;
+}
+.navigation {
+  display: flex;
+  flex-direction: column;
+  max-width: 196px;
+  align-items: center;
+  margin: auto;
+}
+.el__second {
+  margin-top: -30px;
+}
+.el__second h1 {
+  font-size: 48px;
+  font-weight: 500;
+}
+.el__third {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.el_1 {
+  font-weight: 500;
+}
