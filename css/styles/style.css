@@ -184,6 +184,9 @@ a {
   border-style: none;
   cursor: pointer;
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .cards__el .buttons__second .el-btn:hover {
   transform: scale(1.1);
