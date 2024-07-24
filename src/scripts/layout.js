@@ -26,8 +26,3 @@ async function fetchTemplate(url) {
 function attachTemplate(placeHolder, template) {
   document.getElementById(placeHolder).innerHTML = template;
 }
-
-function createStyles() {
-  const styles = tempDiv.querySelectorAll('link[rel="stylesheet"]');
-  styles.forEach((style) => document.head.appendChild(style));
-}
