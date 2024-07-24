@@ -29,6 +29,9 @@
   }
 
   &__roster {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
 .list-elements {
@@ -53,9 +56,11 @@
   .first-img,
   .last-img {
     font-size: 0;
+    cursor: pointer;
   }
 
   &__image {
+    width: 70%;
   }
 
   &__name {
@@ -67,15 +72,30 @@
   }
   .quantity {
     .in-quantity {
-      width: 32px;
+      width: 44px; /* Увеличен для поля ввода */
       height: 32px;
       text-align: center;
       border: 1px #9f9f9f solid;
       border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   &__quantity {
     vertical-align: middle;
+  }
+
+  .product__quantity-input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+  }
+
+  .product__quantity-input:focus {
+    border: none;
+    outline: none;
   }
 
   &__subtotal {

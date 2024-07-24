@@ -26,6 +26,11 @@
 .grocery-list__header {
   max-width: 817px;
 }
+.grocery-list__roster {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .list-elements {
   list-style: none;
   background-color: #f9f1e7;
@@ -49,19 +54,37 @@
 .product .first-img,
 .product .last-img {
   font-size: 0;
+  cursor: pointer;
+}
+.product__image {
+  width: 70%;
 }
 .product__name--grey {
   color: #9f9f9f;
 }
 .product .quantity .in-quantity {
-  width: 32px;
+  width: 44px;
+  /* Увеличен для поля ввода */
   height: 32px;
   text-align: center;
   border: 1px #9f9f9f solid;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .product__quantity {
   vertical-align: middle;
+}
+.product .product__quantity-input {
+  width: 100%;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+}
+.product .product__quantity-input:focus {
+  border: none;
+  outline: none;
 }
 .product .sss {
   text-align: center;
