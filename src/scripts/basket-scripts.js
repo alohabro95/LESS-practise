@@ -1,3 +1,17 @@
+import { loadLayout } from "./layout.js";
+import { updateCartCount } from "./lib.js";
+document.addEventListener("DOMContentLoaded", function () {
+  try {
+    loadLayout();
+    setTimeout(() => {
+      updateCartCount();
+    }, 100);
+    displayCart();
+  } catch (error) {
+    console.error("Error loading layout:", error);
+  }
+});
+
 function displayCart() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartContainer = document.querySelector(".grocery-list__roster");
@@ -25,7 +39,7 @@ function displayCart() {
           <span class="product__subtotal el" id="product-subtotal-${index}">${product.price}</span>
         </div>
         <div class="last-img">
-          <img class="product-bin" src="/images/basket__images/Vector.png" alt="" onclick="removeFromCart(${index})">
+          <img class="product-bin" src="/src/assets/images/basket__images/Vector.png" alt="" onclick="removeFromCart(${index})">
         </div>
       `;
     cartContainer.appendChild(productElement);
@@ -39,15 +53,6 @@ function displayCart() {
   });
 
   updateTotal();
-}
-
-function updateCartCount() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartCountElement = document.getElementById("cart-count");
-  if (cartCountElement) {
-    cartCountElement.textContent = cart.length;
-    localStorage.setItem("cartCount", cart.length);
-  }
 }
 
 function removeFromCart(productIndex) {
@@ -103,8 +108,10 @@ function updateTotal() {
   })}`;
 }
 
-window.onload = function () {
-  displayCart();
-  updateCartCount();
-  updateTotal();
-};
+// window.onload = function () {
+//   loadLayout();
+//   displayCart();
+//   updateCartCount();
+//   updateTotal();
+// };
+window.removeFromCart = removeFromCart;
