@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/css/styles/checkout/checkout.css">
+    <link rel="stylesheet" href="/css/styles/layout/layout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <div class="navigation-image"><img src="/src/assets/images/checkout__images/navigation-image.jpg" alt=""></div>
+    <section class="section-details">
+        <div class="container">
+            <div class="details">
+                <form id="orderForm">
+                    <div class="details__form">
+                        <h1 class="details__form-caption">Billing details</h1>
+                        <div class="details__form-names">
+                            <div class="names__first details__form-el">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input name="firstName" type="text" class="form-control" id="firstName"
+                                    placeholder="Введите имя" value="">
+                            </div>
+                            <div class="names__second details__form-el">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input name="lastName" type="text" class="form-control" id="lastName"
+                                    placeholder="Введите фамилию" value="">
+                            </div>
+                        </div>
+                        <div class="details__form-company details__form-el">
+                            <label for="company" class="form-label">Company Name (Optional)</label>
+                            <input name="company" type="text" class="form-control" id="company"
+                                placeholder="Введите название компании" value="">
+                        </div>
+                        <div class="details__form-country details__form-el">
+                            <label for="country" class="form-label">Country / Region</label>
+                            <input name="country" type="text" class="form-control" id="country"
+                                placeholder="Введите название страны" value="">
+                        </div>
+                        <div class="details__form-street details__form-el">
+                            <label for="street" class="form-label">Street address</label>
+                            <input name="street" type="text" class="form-control" id="street"
+                                placeholder="Введите название улицы" value="">
+                        </div>
+                        <div class="details__form-town details__form-el">
+                            <label for="town" class="form-label">Town / City</label>
+                            <input name="town" type="text" class="form-control" id="town"
+                                placeholder="Введите название города" value="">
+                        </div>
+                        <div class="details__form-province details__form-el">
+                            <label for="province" class="form-label">Province</label>
+                            <input name="province" type="text" class="form-control" id="province"
+                                placeholder="Введите название провинции" value="">
+                        </div>
+                        <div class="details__form-zip details__form-el">
+                            <label for="zip" class="form-label">ZIP code</label>
+                            <input name="zip" type="text" class="form-control" id="zip" placeholder="Введите Zip code"
+                                value="">
+                        </div>
+                        <div class="details__form-phone details__form-el">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input name="phone" type="text" class="form-control" id="phone" placeholder="Введите номер"
+                                value="">
+                        </div>
+                        <div class="details__form-email details__form-el">
+                            <label for="email" class="form-label">Email address</label>
+                            <input name="email" type="text" class="form-control" id="email" placeholder="Введите email"
+                                value="">
+                        </div>
+                        <div class="details__form-info details__form-el">
+                            <label for="info" class="form-label"></label>
+                            <input name="info" type="text" class="form-control" id="info"
+                                placeholder="Additional information" value="">
+                        </div>
+                    </div>
+                </form>
+                <div class="details__info">
+                    <div class="details__table">
+                        <div class="table">
+                            <div class="table__row">
+                                <span class="table__cell table__cell--large table__cell--medium">Product</span>
+                                <span class="table__cell table__cell--large table__cell--medium">Subtotal</span>
+                            </div>
+                            <div class="table__row">
+                                <span class="table__cell table__cell--grey">Asgaard sofa</span>
+                                <span class="table__cell table__cell--light">Rs. 250,000.00</span>
+                            </div>
+                            <div class="table__row">
+                                <span class="table__cell">Subtotal</span>
+                                <span class="table__cell table__cell--light">Rs. 250,000.00</span>
+                            </div>
+                            <div class="table__row">
+                                <span class="table__cell">Total</span>
+                                <span class="table__cell table__cell--bold table__cell--gold">Rs. 250,000.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="details-line">
+                    <div class="details__payment-methods">
+                        <div class="payment-methods">
+                            <label class="payment-item">
+                                <input type="radio" id="dbt" name="drone" value="dbt">
+                                <span class="radio-button"></span>
+                                <span class="label-text">Direct Bank Transfer</span>
+                            </label>
+                            <p class="payment-methods__content">Make your payment directly into our bank account. Please
+                                use your Order ID
+                                as the payment reference. Your order will not be shipped until the funds have
+                                cleared in our account.</p>
+                            <label class="payment-item">
+                                <input type="radio" id="dbt" name="drone" value="dbt">
+                                <span class="radio-button"></span>
+                                <span class="label-text">Direct Bank Transfer</span>
+                            </label>
+                            <label class="payment-item">
+                                <input type="radio" id="dbt" name="drone" value="dbt">
+                                <span class="radio-button"></span>
+                                <span class="label-text">Cash On Delivery</span>
+                            </label>
+                            <p class="payment-methods__text">Your personal data will be used to support your
+                                experience
+                                throughout
+                                this website, to manage access to your account, and for other purposes described in
+                                our
+                                <span class="special-text">privacy policy.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="details__button"><button class="btn" type="submit">Place order</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="info__image"><img src="/src/assets/images/checkout__images/bottom_background_image.jpg" alt=""></div>
+    <div id="footer-placeholder"></div>
+    <script src="/src/scripts/checkout.js" type="module"></script>
+</body>
+
+</html>

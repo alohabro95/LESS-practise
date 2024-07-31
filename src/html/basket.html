@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles/basket/basket.css">
+    <link rel="stylesheet" href="/css/styles/layout/layout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Basket</title>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <div class="image-navigation"><img src="/src/assets/images/basket__images/basketBackground.jpg" alt=""></div>
+    <section class="section-basket">
+        <div class="basket">
+            <div class="grocery-list">
+                <div class="grocery-list__header">
+                    <ul class="list-elements">
+                        <li class="el"></li>
+                        <li class="el">Product</li>
+                        <li class="el">Price</li>
+                        <li class="el">Quantity</li>
+                        <li class="el">Subtotal</li>
+                        <li class="el"></li>
+                    </ul>
+                </div>
+                <div id="cart-table">
+                    <div class="grocery-list__roster"></div>
+                </div>
+            </div>
+            <div class="cart-totals">
+                <h1 class="cart-totals__caption">Cart Totals</h1>
+                <div class="table">
+                    <div class="table__row">
+                        <span class="total">Subtotal</span>
+                        <span class="sum sum--grey" id="summa"></span>
+                    </div>
+                    <div class="table__row">
+                        <span class="total">Total</span>
+                        <span class="sum sum--gold" id="summa"></span>
+                    </div>
+                </div>
+                <button class="table__btn"><a href="/src/html/checkout.html">Check Out</a></button>
+            </div>
+        </div>
+    </section>
+    <div class="info-image"><img src="/src/assets/images/basket__images/backgroundInfo.jpg" alt=""></div>
+    <div id="footer-placeholder"></div>
+    <script src="/src/scripts/basket-scripts.js" type="module"></script>
+</body>
+
+</html>
