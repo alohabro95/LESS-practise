@@ -1,6 +1,6 @@
-export function loadLayout() {
-  loadHeader("header-placeholder", "layout/header.html");
-  loadFooter("footer-placeholder", "layout/footer.html");
+export async function loadLayout() {
+  loadHeader("header-placeholder", "/src/layout/header.html");
+  loadFooter("footer-placeholder", "/src/layout/footer.html");
 }
 
 async function loadHeader(headerPlaceHolder, headerUrl) {
