@@ -1,3 +1,24 @@
+import { updateCartCount } from "./lib.js";
+import { loadLayout } from "./layout.js";
+
+document.addEventListener("DOMContentLoaded", function () {
+  try {
+    loadLayout();
+    setTimeout(() => {
+      updateCartCount();
+    }, 100);
+  } catch (error) {
+    console.error("Error loading layout:", error);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".button");
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => changeColor(index + 1));
+  });
+});
+
 function changeColor(buttonId) {
   var buttons = document.getElementsByClassName("button");
   for (var i = 0; i < buttons.length; i++) {
@@ -5,22 +26,12 @@ function changeColor(buttonId) {
   }
 
   var button = document.getElementById("button" + buttonId);
-  button.classList.add("active");
+  if (button) {
+    button.classList.add("active");
+  } else {
+    console.error(`Button with id "button${buttonId}" not found.`);
+  }
 }
-
-// function changeCircle(color) {
-//   var clickedCircle = event.target;
-//   var circles = document.querySelectorAll(".circle");
-//   circles.forEach(function (circle) {
-//     circle.style.borderColor = "transparent";
-//   });
-
-//   clickedCircle.style.borderColor = color;
-// }
-
-// function changeCircleColor(event) {
-//     const el =
-// }
 
 const circles = document.querySelectorAll(".circle");
 
