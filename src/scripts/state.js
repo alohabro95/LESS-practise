@@ -13,7 +13,7 @@ class State {
   setCart(items) {
     this.state.cart = items;
     localStorage.setItem("cart", JSON.stringify(items));
-    this.updateCartCount(); // Вызов через `this`
+    this.updateCartCount();
   }
 
   addToCart(productIndex) {
@@ -22,17 +22,16 @@ class State {
       const productToAdd = products[productIndex];
       this.state.cart.push(productToAdd);
       this.setCart(this.state.cart);
-      this.updateCartCount(); // Вызов через `this`
+      this.updateCartCount();
     } else {
       console.error("Invalid product index.");
     }
   }
-
-  removeFromCart(itemId) {
-    this.state.cart = this.state.cart.filter((item) => item.id !== itemId);
-    this.setCart(this.state.cart);
-    this.updateCartCount(); // Вызов через `this`
-  }
+  //   removeFromCart(itemId) {
+  //     this.state.cart = this.state.cart.filter((item) => item.id !== itemId);
+  //     this.setCart(this.state.cart);
+  //     this.updateCartCount();
+  //   }
 
   updateCartCount() {
     const cartCountElement = document.getElementById("cart-count");
