@@ -1,12 +1,12 @@
 import { scrollTo } from "./lib.js";
 import { loadLayout } from "./layout.js";
-import { updateCartCount, addToCart } from "./lib.js";
+import { appState } from "./state.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   try {
     loadLayout();
     setTimeout(() => {
-      updateCartCount();
+      appState.updateCartCount();
     }, 100);
     displayProducts(startIndex, productsPerPage);
   } catch (error) {
@@ -41,9 +41,9 @@ function displayProducts(startIndex, count) {
             <button class="add" data-index="${i}">Add to cart</button>
           </div>
           <div class="buttons__second">
-            <button class="el-btn"><img class="logo-btn" src="/images/products__images/img__buttons/shire.svg" alt=""><span class="text-btn">Share</span></button>
-            <button class="el-btn"><img class="logo-btn" src="/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compire</span></button>
-            <button class="el-btn"><img class="logo-btn" src="/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
+            <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/shire.svg" alt=""><span class="text-btn">Share</span></button>
+            <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compire</span></button>
+            <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ function displayProducts(startIndex, count) {
   addButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const productIndex = parseInt(button.getAttribute("data-index"), 10);
-      addToCart(productIndex);
+      appState.addToCart(productIndex);
     });
   });
 
