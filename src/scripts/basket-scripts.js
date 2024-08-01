@@ -1,14 +1,18 @@
+import { appState } from "./state.js";
 import { loadLayout } from "./layout.js";
-import { updateCartCount } from "./lib.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   try {
-    loadLayout();
-    setTimeout(() => {
-      updateCartCount();
-    }, 100);
-    displayCart();
+    loadLayout()
+      .then(() => {
+        appState.updateCartCount();
+        displayCart();
+      })
+      .catch((error) => {
+        console.error("Error loading layout:", error);
+      });
   } catch (error) {
-    console.error("Error loading layout:", error);
+    console.error("Error:", error);
   }
 });
 
@@ -56,11 +60,11 @@ function displayCart() {
 }
 
 function removeFromCart(productIndex) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cart = appState.getState().cart || [];
   cart.splice(productIndex, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
+  appState.updateCartCount();
   displayCart();
-  updateCartCount();
   updateTotal();
 }
 
@@ -108,10 +112,4 @@ function updateTotal() {
   })}`;
 }
 
-// window.onload = function () {
-//   loadLayout();
-//   displayCart();
-//   updateCartCount();
-//   updateTotal();
-// };
 window.removeFromCart = removeFromCart;
