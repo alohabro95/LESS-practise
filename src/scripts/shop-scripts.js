@@ -3,14 +3,17 @@ import { loadLayout } from "./layout.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   try {
-    loadLayout();
-    setTimeout(() => {
-      appState.updateCartCount();
-    }, 100);
-    displayProducts(currentPage);
-    setupPagination();
+    loadLayout()
+      .then(() => {
+        appState.updateCartCount();
+        displayProducts(currentPage);
+        setupPagination();
+      })
+      .catch((error) => {
+        console.error("Error loading layout:", error);
+      });
   } catch (error) {
-    console.error("Error loading layout:", error);
+    console.error("Error:", error);
   }
 });
 

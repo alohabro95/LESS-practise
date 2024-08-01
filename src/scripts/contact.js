@@ -1,12 +1,16 @@
 import { loadLayout } from "./layout.js";
-import { updateCartCount } from "./lib.js";
+import { appState } from "./state.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   try {
-    loadLayout();
-    setTimeout(() => {
-      updateCartCount();
-    }, 100);
+    loadLayout()
+      .then(() => {
+        appState.updateCartCount();
+      })
+      .catch((error) => {
+        console.error("Error loading layout:", error);
+      });
   } catch (error) {
-    console.error("Error loading layout:", error);
+    console.error("Error:", error);
   }
 });

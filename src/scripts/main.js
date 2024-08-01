@@ -4,13 +4,16 @@ import { appState } from "./state.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   try {
-    loadLayout();
-    setTimeout(() => {
-      appState.updateCartCount();
-    }, 100);
-    displayProducts(startIndex, productsPerPage);
+    loadLayout()
+      .then(() => {
+        appState.updateCartCount();
+        displayProducts(startIndex, productsPerPage);
+      })
+      .catch((error) => {
+        console.error("Error loading layout:", error);
+      });
   } catch (error) {
-    console.error("Error loading layout:", error);
+    console.error("Error:", error);
   }
 });
 
