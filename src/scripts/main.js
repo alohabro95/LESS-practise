@@ -78,6 +78,20 @@ scrollBtn.addEventListener("click", () => {
   scrollTo("section-products");
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const image1 = document.getElementById("image_one");
+  const image2 = document.getElementById("image_two");
+  const image3 = document.getElementById("image_three");
+
+  const redirectToCatalog = (filter) => {
+    window.location.href = `src/html/shop.html?filter=${filter}`;
+  };
+
+  image1.addEventListener("click", () => redirectToCatalog("filter1"));
+  image2.addEventListener("click", () => redirectToCatalog("filter2"));
+  image3.addEventListener("click", () => redirectToCatalog("filter3"));
+});
+
 var slickSettings = {
   dots: true,
   speed: 500,
