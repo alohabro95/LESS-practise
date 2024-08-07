@@ -18,13 +18,23 @@ class State {
 
   addToCart(productIndex) {
     const products = JSON.parse(localStorage.getItem("localProducts")) || [];
+
     if (productIndex >= 0 && productIndex < products.length) {
       const productToAdd = products[productIndex];
-      this.state.cart.push(productToAdd);
-      this.setCart(this.state.cart);
-      this.updateCartCount();
+
+      const isProductInCart = this.state.cart.some(
+        (product) => product.id === productToAdd.id
+      );
+
+      if (!isProductInCart) {
+        this.state.cart.push(productToAdd);
+        this.setCart(this.state.cart);
+        this.updateCartCount();
+      } else {
+        console.log("Товар уже добавлен в корзину.");
+      }
     } else {
-      console.error("Invalid product index.");
+      console.error("Неверный индекс товара.");
     }
   }
   //   removeFromCart(itemId) {
