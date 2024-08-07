@@ -1,5 +1,6 @@
 const products = [
   {
+    id: 0,
     name: "Syltherine",
     description: "Stylish cafe chair",
     price: "$ 250",
@@ -9,6 +10,7 @@ const products = [
     place: "dining",
   },
   {
+    id: 1,
     name: "Leviosa",
     description: "Stylish cafe chair",
     price: "$ 100",
@@ -18,6 +20,7 @@ const products = [
     place: "living",
   },
   {
+    id: 2,
     name: "Lolito",
     description: "Luxury big sofa",
     price: "$ 700",
@@ -27,6 +30,7 @@ const products = [
     place: "bedroom",
   },
   {
+    id: 3,
     name: "Respira",
     description: "Outdoor bar table and stool",
     price: "$ 500",
@@ -36,6 +40,7 @@ const products = [
     place: "living",
   },
   {
+    id: 4,
     name: "Grifo",
     description: "Night lamp",
     price: "$ 50",
@@ -45,6 +50,7 @@ const products = [
     place: "bedroom",
   },
   {
+    id: 5,
     name: "Muggo",
     description: "Small mug",
     price: "$ 350",
@@ -54,6 +60,7 @@ const products = [
     place: "dining",
   },
   {
+    id: 6,
     name: "Pingky",
     description: "Cute bed set",
     price: "$ 700",
@@ -63,6 +70,7 @@ const products = [
     place: "dining",
   },
   {
+    id: 7,
     name: "Potty",
     description: "Minimalist flower pot",
     price: "$ 500",
@@ -71,6 +79,7 @@ const products = [
     type: "large",
   },
   {
+    id: 8,
     name: "Potty",
     description: "Minimalist flower pot",
     price: "$ 500",
