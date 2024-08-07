@@ -11,8 +11,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "del": "^7.1.0",
     "gulp": "^5.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
     "gulp-less": "^5.0.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
     "less": "^4.2.0"
   }
 }
