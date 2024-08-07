@@ -6,8 +6,16 @@ document.addEventListener("DOMContentLoaded", function () {
     loadLayout()
       .then(() => {
         appState.updateCartCount();
-        displayProducts(currentPage);
-        setupPagination();
+
+        const params = new URLSearchParams(window.location.search);
+        const filterParam = params.get("filter");
+
+        if (filterParam) {
+          applyFilter(filterParam);
+        } else {
+          displayProducts(currentPage);
+          setupPagination();
+        }
       })
       .catch((error) => {
         console.error("Error loading layout:", error);
@@ -130,12 +138,24 @@ function setupPagination() {
   }
 }
 
-function filterProducts(type) {
-  filteredProductsArray =
-    type === "all"
-      ? [...products]
-      : products.filter((product) => product.type === type);
+function applyFilter(filterParam) {
+  const queryFilterMap = {
+    filter1: { key: "place", value: "dining" },
+    filter2: { key: "place", value: "living" },
+    filter3: { key: "place", value: "bedroom" },
+  };
 
+  const filter = queryFilterMap[filterParam];
+  if (filter) {
+    filterProducts(filter.key, filter.value);
+  } else {
+    displayProducts(currentPage);
+    setupPagination();
+  }
+}
+
+function filterProducts(key, value) {
+  filteredProductsArray = products.filter((product) => product[key] === value);
   currentPage = 1;
   displayProducts(currentPage);
   setupPagination();
@@ -147,7 +167,35 @@ filters.addEventListener("click", () => {
 
 dropdownMenu.querySelectorAll("li").forEach((item) => {
   item.addEventListener("click", () => {
-    filterProducts(item.id);
+    const filterKey = item.id;
+    applyDropdownFilter(filterKey);
   });
 });
-console.log(paginationContainer);
+
+function applyDropdownFilter(filterKey) {
+  switch (filterKey) {
+    case "all":
+      filteredProductsArray = [...products];
+      break;
+    case "large":
+      filteredProductsArray = products.filter(
+        (product) => product.type === "large"
+      );
+      break;
+    case "small":
+      filteredProductsArray = products.filter(
+        (product) => product.type === "small"
+      );
+      break;
+    case "other":
+      filteredProductsArray = products.filter(
+        (product) => product.type === "other"
+      );
+      break;
+    default:
+      filteredProductsArray = [...products];
+  }
+  currentPage = 1;
+  displayProducts(currentPage);
+  setupPagination();
+}
