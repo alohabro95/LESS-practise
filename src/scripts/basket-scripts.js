@@ -1,6 +1,5 @@
 import { appState } from "./state.js";
 import { loadLayout } from "./layout.js";
-
 document.addEventListener("DOMContentLoaded", function () {
   try {
     loadLayout()
@@ -62,8 +61,7 @@ function displayCart() {
 function removeFromCart(productIndex) {
   let cart = appState.getState().cart || [];
   cart.splice(productIndex, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  appState.updateCartCount();
+  appState.setCart(cart);
   displayCart();
   updateTotal();
 }
@@ -105,11 +103,13 @@ function updateTotal() {
     total += isNaN(subtotal) ? 0 : subtotal;
   });
 
-  const totalElement = document.getElementById("summa");
-  totalElement.textContent = `$ ${total.toLocaleString("en-US", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  })}`;
+  const subTotalElement = document.getElementById("subtotal");
+  if (subTotalElement) {
+    subTotalElement.textContent = `$ ${total.toLocaleString("en-US", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })}`;
+  }
 }
 
 window.removeFromCart = removeFromCart;
