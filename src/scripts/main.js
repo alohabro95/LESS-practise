@@ -46,7 +46,7 @@ function displayProducts(startIndex, count) {
           <div class="buttons__second">
             <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/shire.svg" alt=""><span class="text-btn">Share</span></button>
             <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compire</span></button>
-            <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
+            <button class="like el-btn" data-index="${i}"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
           </div>
         </div>
       </div>
@@ -55,10 +55,17 @@ function displayProducts(startIndex, count) {
   }
 
   const addButtons = container.querySelectorAll(".add");
+  const likeButtons = container.querySelectorAll(".like");
   addButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const productIndex = parseInt(button.getAttribute("data-index"), 10);
       appState.addToCart(productIndex);
+    });
+  });
+  likeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const productIndex = parseInt(button.getAttribute("data-index"), 10);
+      appState.addToFavorites(productIndex);
     });
   });
 
@@ -87,14 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = `src/html/shop.html?filter=${filter}`;
   };
 
-  image1.addEventListener("click", () => redirectToCatalog("filter1"));
-  image2.addEventListener("click", () => redirectToCatalog("filter2"));
-  image3.addEventListener("click", () => redirectToCatalog("filter3"));
+  image1.addEventListener("click", () => redirectToCatalog("dining"));
+  image2.addEventListener("click", () => redirectToCatalog("living"));
+  image3.addEventListener("click", () => redirectToCatalog("bedroom"));
 });
 
 var slickSettings = {
   dots: true,
-  speed: 500,
+  speed: 800,
   slidesToShow: 2,
   slidesToScroll: 1,
   prevArrow:
