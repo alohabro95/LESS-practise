@@ -7,6 +7,7 @@
   background-image: url(/src/assets/images/favorites__images/navigation_image.jpg);
   height: 316px;
   display: flex;
+  margin-bottom: 50px;
 }
 .navigation {
   display: flex;
@@ -37,4 +38,66 @@
 
 .el_1 {
   font-weight: 500;
+}
+
+.section-favorites {
+}
+
+.favorites {
+}
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0px 0px 30px 50px;
+  gap: 20px;
+}
+
+.product {
+  display: flex;
+
+  &__image {
+    width: 80%;
+  }
+
+  &__name {
+    font-size: 30px;
+    &--grey {
+    }
+  }
+
+  &__price {
+    font-size: 20px;
+  }
+
+  &__subtotal {
+  }
+}
+.second-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.el {
+}
+
+.last-img {
+  cursor: pointer;
+}
+.product-bin {
+}
+
+.add {
+  width: 146px;
+  height: 48px;
+  border-style: none;
+  font-weight: 600;
+  color: #b88e2f;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.add:hover {
+  cursor: pointer;
+  background-color: #b88e2f;
+  color: #ffffff;
 }

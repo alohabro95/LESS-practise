@@ -10,6 +10,10 @@ class State {
     return this.state;
   }
 
+  getCart() {
+    return this.state.cart;
+  }
+
   setCart(items) {
     this.state.cart = items;
     localStorage.setItem("cart", JSON.stringify(items));
@@ -18,7 +22,6 @@ class State {
 
   addToCart(productIndex) {
     const products = JSON.parse(localStorage.getItem("localProducts")) || [];
-
     if (productIndex >= 0 && productIndex < products.length) {
       const productToAdd = products[productIndex];
 
@@ -37,11 +40,6 @@ class State {
       console.error("Неверный индекс товара.");
     }
   }
-  //   removeFromCart(itemId) {
-  //     this.state.cart = this.state.cart.filter((item) => item.id !== itemId);
-  //     this.setCart(this.state.cart);
-  //     this.updateCartCount();
-  //   }
 
   updateCartCount() {
     const cartCountElement = document.getElementById("cart-count");
@@ -56,11 +54,29 @@ class State {
   setFavorites(items) {
     this.state.favorites = items;
     localStorage.setItem("favorites", JSON.stringify(items));
+    console.log("Favorites saved:", items);
   }
 
-  addToFavorites(item) {
-    this.state.favorites.push(item);
-    this.setFavorites(this.state.favorites);
+  addToFavorites(productIndex) {
+    const products = JSON.parse(localStorage.getItem("localProducts")) || [];
+
+    if (productIndex >= 0 && productIndex < products.length) {
+      const productToAdd = products[productIndex];
+
+      const isProductInFavorites = this.state.favorites.some(
+        (product) => product.id === productToAdd.id
+      );
+
+      if (!isProductInFavorites) {
+        this.state.favorites.push(productToAdd);
+        this.setFavorites(this.state.favorites);
+        console.log("ti 4ert");
+      } else {
+        console.log("Товар уже добавлен в избранное.");
+      }
+    } else {
+      console.error("Неверный индекс товара.");
+    }
   }
 
   removeFromFavorites(itemId) {
