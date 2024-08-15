@@ -41,14 +41,22 @@
             <div class="top__right">
                 <div class="right__first">
                     <span>Show</span>
-                    <div class="right-form show-form"><span></span></div>
+                    <div class="right-form show-form"><input type="text" class="show-form__input" id="show-sort">
+                    </div>
                 </div>
                 <div class="right__second">
                     <span>Short by</span>
-                    <div class="right-form short-form"><span></span></div>
+                    <div class="dropdown-container">
+                        <select class="custom-dropdown">
+                            <option class="drop-option" value="1">Default</option>
+                            <option class="drop-option" value="alphabet">Alphabet</option>
+                            <option class="drop-option" value="cheap">Cheap first</option>
+                            <option class="drop-option" value="expensive">Expensive first</option>
+                        </select>
+                    </div>
                 </div>
+                <button class="right-btn" id="input-value__btn">Accept</button>
             </div>
-        </div>
     </section>
     <section class="section-catalog">
         <div class="products__cards" id="product-container"></div>

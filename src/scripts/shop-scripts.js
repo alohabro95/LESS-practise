@@ -1,21 +1,13 @@
 import { appState } from "./state.js";
 import { loadLayout } from "./layout.js";
-
 document.addEventListener("DOMContentLoaded", function () {
   try {
     loadLayout()
       .then(() => {
         appState.updateCartCount();
-
         const params = new URLSearchParams(window.location.search);
         const filterParam = params.get("filter");
-
-        if (filterParam) {
-          applyFilter(filterParam);
-        } else {
-          displayProducts(currentPage);
-          setupPagination();
-        }
+        applyFilter(filterParam);
       })
       .catch((error) => {
         console.error("Error loading layout:", error);
@@ -26,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const products = JSON.parse(localStorage.getItem("localProducts")) || [];
-const productsPerPage = 8;
+let productsPerPage = 8;
 let currentPage = 1;
 
 const container = document.getElementById("product-container");
@@ -34,8 +26,20 @@ const paginationContainer = document.getElementById("pagination-container");
 const infoElement = document.querySelector(".left__info");
 const filters = document.querySelector(".filters");
 const dropdownMenu = filters.querySelector(".dropdown-menu");
+const productCountInput = document.getElementById("show-sort");
+const applyCountButton = document.getElementById("input-value__btn");
 
 let filteredProductsArray = [...products];
+
+const queryFilterMap = {
+  dining: { key: "place", value: "dining" },
+  living: { key: "place", value: "living" },
+  bedroom: { key: "place", value: "bedroom" },
+  large: { key: "type", value: "large" },
+  small: { key: "type", value: "small" },
+  other: { key: "type", value: "other" },
+  all: { key: null, value: null },
+};
 
 function displayProducts(page) {
   container.innerHTML = "";
@@ -73,12 +77,12 @@ function createProductElement(product, index) {
     <div class="hover-container">
       <div class="buttons">
         <div class="buttons__first">
-          <button class="add" data-index="${index}">Add to cart</button>
+          <button class="add" data-index="${product.id}">Add to cart</button>
         </div>
         <div class="buttons__second">
-          <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/shire.svg" alt=""><span class="text-btn">Share</span></button>
-          <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compire</span></button>
-          <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
+          <button id="share-btn" class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/shire.svg" alt=""><span class="text-btn">Share</span></button>
+          <button id="compire-btn" class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compire</span></button>
+          <button class="like el-btn" data-index="${product.id}"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
         </div>
       </div>
     </div>
@@ -89,9 +93,16 @@ function createProductElement(product, index) {
 function setupAddToCartListeners() {
   container.addEventListener("click", (event) => {
     const { target } = event;
+    const productId = parseInt(target.getAttribute("data-index"), 10);
+
     if (target.classList.contains("add")) {
-      const productIndex = parseInt(target.getAttribute("data-index"), 10);
-      appState.addToCart(productIndex);
+      appState.addToCart(productId);
+    }
+
+    if (target.closest(".like")) {
+      const button = target.closest(".like");
+      const productIndex = parseInt(button.getAttribute("data-index"), 10);
+      appState.addToFavorites(productIndex);
     }
   });
 }
@@ -99,6 +110,7 @@ function setupAddToCartListeners() {
 function setupPagination() {
   paginationContainer.innerHTML = "";
   const pageCount = Math.ceil(filteredProductsArray.length / productsPerPage);
+
   if (pageCount <= 1) {
     paginationContainer.style.display = "none";
     return;
@@ -123,6 +135,7 @@ function setupPagination() {
 
     paginationContainer.appendChild(pageButton);
   }
+
   if (currentPage < pageCount) {
     const nextButton = document.createElement("button");
     nextButton.textContent = "Next";
@@ -139,27 +152,79 @@ function setupPagination() {
 }
 
 function applyFilter(filterParam) {
-  const queryFilterMap = {
-    filter1: { key: "place", value: "dining" },
-    filter2: { key: "place", value: "living" },
-    filter3: { key: "place", value: "bedroom" },
-  };
-
-  const filter = queryFilterMap[filterParam];
-  if (filter) {
-    filterProducts(filter.key, filter.value);
+  const filter = queryFilterMap[filterParam] || queryFilterMap["all"];
+  if (filter.key) {
+    filteredProductsArray = products.filter(
+      (product) => product[filter.key] === filter.value
+    );
   } else {
-    displayProducts(currentPage);
-    setupPagination();
+    filteredProductsArray = [...products];
   }
+  currentPage = 1;
+  displayProducts(currentPage);
+  setupPagination();
+
+  const newUrl = new URL(window.location);
+  newUrl.searchParams.set("filter", filterParam || "all");
+  window.history.pushState({}, "", newUrl);
 }
 
-function filterProducts(key, value) {
-  filteredProductsArray = products.filter((product) => product[key] === value);
+function applyDropdownFilter(filterKey) {
+  applyFilter(filterKey);
+}
+
+function handleProductCountInput() {
+  const count = parseInt(productCountInput.value, 10);
+  if (Number.isInteger(count) && count > 0) {
+    productsPerPage = count;
+    currentPage = 1;
+    displayProducts(currentPage);
+    setupPagination();
+  } else {
+    alert("Еблан что ли? Зачем тебе ноль товаров?");
+  }
+  // productCountInput.value = "";
+}
+
+function parsePrice(price) {
+  return parseFloat(price.replace(/[^0-9.]/g, ""));
+}
+
+function sortProducts(criteria) {
+  switch (criteria) {
+    case "alphabet":
+      filteredProductsArray.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "cheap":
+      filteredProductsArray.sort(
+        (a, b) => parsePrice(a.price) - parsePrice(b.price)
+      );
+      break;
+    case "expensive":
+      filteredProductsArray.sort(
+        (a, b) => parsePrice(b.price) - parsePrice(a.price)
+      );
+      break;
+    default:
+      filteredProductsArray = [...products];
+  }
   currentPage = 1;
   displayProducts(currentPage);
   setupPagination();
 }
+
+document
+  .querySelector(".custom-dropdown")
+  .addEventListener("change", function () {
+    const sortCriteria = this.value;
+    sortProducts(sortCriteria);
+  });
+
+window.addEventListener("popstate", () => {
+  const params = new URLSearchParams(window.location.search);
+  const filterParam = params.get("filter");
+  applyFilter(filterParam);
+});
 
 filters.addEventListener("click", () => {
   dropdownMenu.classList.toggle("visible");
@@ -172,30 +237,5 @@ dropdownMenu.querySelectorAll("li").forEach((item) => {
   });
 });
 
-function applyDropdownFilter(filterKey) {
-  switch (filterKey) {
-    case "all":
-      filteredProductsArray = [...products];
-      break;
-    case "large":
-      filteredProductsArray = products.filter(
-        (product) => product.type === "large"
-      );
-      break;
-    case "small":
-      filteredProductsArray = products.filter(
-        (product) => product.type === "small"
-      );
-      break;
-    case "other":
-      filteredProductsArray = products.filter(
-        (product) => product.type === "other"
-      );
-      break;
-    default:
-      filteredProductsArray = [...products];
-  }
-  currentPage = 1;
-  displayProducts(currentPage);
-  setupPagination();
-}
+applyCountButton.addEventListener("click", handleProductCountInput);
+console.log("object");
