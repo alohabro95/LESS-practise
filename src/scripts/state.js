@@ -1,8 +1,15 @@
+export const stateFeatures = {
+  cart: "cart",
+  favorites: "favorites",
+  products: "products",
+};
 class State {
   constructor() {
     this.state = {
-      cart: JSON.parse(localStorage.getItem("cart")) || [],
-      favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+      cart: JSON.parse(localStorage.getItem(stateFeatures.cart)) || [],
+      favorites:
+        JSON.parse(localStorage.getItem(stateFeatures.favorites)) || [],
+      products: JSON.parse(localStorage.getItem(stateFeatures.products)) || [],
     };
   }
 
@@ -14,14 +21,27 @@ class State {
     return this.state.cart;
   }
 
+  getCartTotal() {
+    const total = this.state.cart.reduce((acc, curr) => {
+      const result = curr.price * curr.quantity;
+      acc += result;
+      return acc;
+    }, 0);
+    return total;
+  }
+
+  getProducts() {
+    return this.state.products;
+  }
+
   setCart(items) {
     this.state.cart = items;
     localStorage.setItem("cart", JSON.stringify(items));
     this.updateCartCount();
   }
 
-  addToCart(productIndex) {
-    const products = JSON.parse(localStorage.getItem("localProducts")) || [];
+  addToCart(productIndex, quantity) {
+    const products = this.state.products || [];
     if (productIndex >= 0 && productIndex < products.length) {
       const productToAdd = products[productIndex];
 
@@ -30,12 +50,24 @@ class State {
       );
 
       if (!isProductInCart) {
+        productToAdd.quantity = quantity || 1;
         this.state.cart.push(productToAdd);
         this.setCart(this.state.cart);
         this.updateCartCount();
       } else {
         console.log("Товар уже добавлен в корзину.");
       }
+    } else {
+      console.error("Неверный индекс товара.");
+    }
+  }
+
+  addToProductCard(productIndex) {
+    const products = this.state.products || [];
+    if (productIndex >= 0 && productIndex < products.length) {
+      const productToView = products[productIndex];
+      localStorage.setItem("selectedProduct", JSON.stringify(productToView));
+      window.location.href = `/src/html/product.html?id=${productToView.id}`;
     } else {
       console.error("Неверный индекс товара.");
     }
@@ -54,11 +86,10 @@ class State {
   setFavorites(items) {
     this.state.favorites = items;
     localStorage.setItem("favorites", JSON.stringify(items));
-    console.log("Favorites saved:", items);
   }
 
   addToFavorites(productIndex) {
-    const products = JSON.parse(localStorage.getItem("localProducts")) || [];
+    const products = this.state.products || [];
 
     if (productIndex >= 0 && productIndex < products.length) {
       const productToAdd = products[productIndex];
@@ -70,7 +101,6 @@ class State {
       if (!isProductInFavorites) {
         this.state.favorites.push(productToAdd);
         this.setFavorites(this.state.favorites);
-        console.log("ti 4ert");
       } else {
         console.log("Товар уже добавлен в избранное.");
       }

@@ -99,10 +99,12 @@
   &__row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__cell {
     font-weight: 500;
+    white-space: nowrap;
 
     &--large {
       font-size: 24px;
@@ -124,6 +126,21 @@
     }
   }
 }
+
+.product-quantity {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.product-name {
+  flex: 1;
+}
+
+.product-subtotal {
+  flex: 1;
+  text-align: right;
+}
+
 .details-line {
   color: #d9d9d9;
   size: 1px;
