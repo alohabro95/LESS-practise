@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const productsPerPage = 4;
 let startIndex = 0;
 
-const products = JSON.parse(localStorage.getItem("localProducts")) || [];
+const products = appState.getProducts();
 
 function displayProducts(startIndex, count) {
   const container = document.getElementById("product-container");
@@ -34,8 +34,10 @@ function displayProducts(startIndex, count) {
         <h3 class="cards__el-caption">${product.name}</h3>
         <span class="cards__el-text">${product.description}</span>
         <div class="cards__el-prices">
-          <span class="prices__price">${product.price}</span>
-          <span class="prices__discount"><strike>${product.discount}</strike></span>
+          <span class="prices__price">${product.price} $</span>
+          <span class="prices__discount"><strike>${
+            product.discount ? product.discount + "$" : ""
+          }</strike></span>
         </div>
       </div>
       <div class="hover-container">
@@ -45,7 +47,7 @@ function displayProducts(startIndex, count) {
           </div>
           <div class="buttons__second">
             <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/shire.svg" alt=""><span class="text-btn">Share</span></button>
-            <button class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compire</span></button>
+            <button class="compare el-btn" data-index="${i}"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compare</span></button>
             <button class="like el-btn" data-index="${i}"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
           </div>
         </div>
@@ -53,6 +55,14 @@ function displayProducts(startIndex, count) {
     `;
     container.appendChild(productElement);
   }
+
+  const compareButtons = container.querySelectorAll(".compare");
+  compareButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const productIndex = parseInt(button.getAttribute("data-index"), 10);
+      appState.addToProductCard(productIndex);
+    });
+  });
 
   const addButtons = container.querySelectorAll(".add");
   const likeButtons = container.querySelectorAll(".like");

@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-const products = JSON.parse(localStorage.getItem("localProducts")) || [];
+const products = appState.getProducts();
 let productsPerPage = 8;
 let currentPage = 1;
 
@@ -70,8 +70,10 @@ function createProductElement(product, index) {
       <h3 class="cards__el-caption">${product.name}</h3>
       <span class="cards__el-text">${product.description}</span>
       <div class="cards__el-prices">
-        <span class="prices__price">${product.price}</span>
-        <span class="prices__discount"><strike>${product.discount}</strike></span>
+        <span class="prices__price">${product.price} $</span>
+        <span class="prices__discount"><strike>${
+          product.discount ? product.discount + "$" : ""
+        }</strike></span>
       </div>
     </div>
     <div class="hover-container">
@@ -81,8 +83,12 @@ function createProductElement(product, index) {
         </div>
         <div class="buttons__second">
           <button id="share-btn" class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/shire.svg" alt=""><span class="text-btn">Share</span></button>
-          <button id="compire-btn" class="el-btn"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compire</span></button>
-          <button class="like el-btn" data-index="${product.id}"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
+          <button id="compire-btn" class="compare el-btn" data-index="${
+            product.id
+          }"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/compire.svg" alt=""><span class="text-btn">Compare</span></button>
+          <button class="like el-btn" data-index="${
+            product.id
+          }"><img class="logo-btn" src="/src/assets/images/products__images/img__buttons/like.svg" alt=""><span class="text-btn">Like</span></button>
         </div>
       </div>
     </div>
@@ -103,6 +109,11 @@ function setupAddToCartListeners() {
       const button = target.closest(".like");
       const productIndex = parseInt(button.getAttribute("data-index"), 10);
       appState.addToFavorites(productIndex);
+    }
+    if (target.closest(".compare")) {
+      const compareButton = target.closest(".compare");
+      const comp = parseInt(compareButton.getAttribute("data-index"), 10);
+      appState.addToProductCard(comp);
     }
   });
 }
@@ -181,13 +192,12 @@ function handleProductCountInput() {
     displayProducts(currentPage);
     setupPagination();
   } else {
-    alert("Еблан что ли? Зачем тебе ноль товаров?");
+    alert("Выбрано 0 товаров");
   }
-  // productCountInput.value = "";
 }
 
 function parsePrice(price) {
-  return parseFloat(price.replace(/[^0-9.]/g, ""));
+  return parseFloat(String(price).replace(/[^0-9.]/g, ""));
 }
 
 function sortProducts(criteria) {
@@ -238,4 +248,3 @@ dropdownMenu.querySelectorAll("li").forEach((item) => {
 });
 
 applyCountButton.addEventListener("click", handleProductCountInput);
-console.log("object");
