@@ -24,5 +24,10 @@ async function fetchTemplate(url) {
 }
 
 function attachTemplate(placeHolder, template) {
-  document.getElementById(placeHolder).innerHTML = template;
+  const element = document.getElementById(placeHolder);
+  if (element) {
+    element.innerHTML = template;
+  } else {
+    console.error(`Element with id ${placeHolder} not found.`);
+  }
 }
