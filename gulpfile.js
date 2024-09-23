@@ -123,7 +123,7 @@ function watch() {
   gulp.watch(paths.json.src, json);
 }
 
-exports.clean = cleanTask;
+// exports.clean = cleanTask;
 exports.styles = compileLess;
 exports.scripts = scripts;
 exports.html = html;
@@ -133,7 +133,6 @@ exports.assets = assets;
 exports.json = json;
 exports.watch = watch;
 exports.default = gulp.series(
-  cleanTask,
   gulp.parallel(compileLess, scripts, html, htmlElements, layout, assets, json),
   watch
 );
