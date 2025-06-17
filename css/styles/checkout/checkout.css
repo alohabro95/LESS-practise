@@ -92,6 +92,7 @@
   justify-content: space-between;
 }
 .table__cell {
+  width: 100px;
   font-weight: 500;
 }
 .table__cell--large {
@@ -105,6 +106,7 @@
   font-weight: 300;
 }
 .table__cell--gold {
+  text-align: right;
   font-size: 24px;
   font-weight: 700;
   color: #b88e2f;
@@ -160,4 +162,11 @@
 }
 .info__image img {
   width: 100%;
+}
+.product-quantity {
+  margin: 0 auto;
+  text-align: center;
+}
+.product-subtotal {
+  text-align: right;
 }
